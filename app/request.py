@@ -26,3 +26,17 @@ def get_sources():
 
     return source_results
 
+def process_sources(source_list):
+    source_results = []
+    for source_item in source_list:
+        id = source_item.get('id')
+        name = source_item.get('name')
+        url = source_item.get('url')
+
+        if name:
+            source_object = Source(id, name, url)
+
+            source_results.append(source_object)
+
+    return source_results
+    
