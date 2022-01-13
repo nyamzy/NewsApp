@@ -1,20 +1,20 @@
-from app import app
 import urllib.request, json
-
-from app.article_test import Article
-from .models import source, article
-
-Source = source.Source
-Article = article.Article
+from .models import Source, Article
 
 #Getting the api key
-api_key = app.config['NEWS_API_KEY']
+api_key = None
 
 #Getting the news source url
-base_url = app.config['SOURCE_BASE_URL']
+base_url = None
 
 #Getting the news articles url
-base_url2 = app.config['NEWS_ARTICLES_URL']
+base_url2 = None
+
+def configure_request(app):
+    global api_key, base_url, base_url2
+    api_key = app.config['NEWS_API_KEY']
+    base_url = app.config['SOURCE_BASE_URL']
+    base_url2 = app.config['NEWS_ARTICLES_URL']
 
 def get_sources(category):
 
